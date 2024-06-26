@@ -1,0 +1,163 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0d1117;
+    margin: 0;
+    padding: 0;
+    color: #c9d1d9;
+}
+
+nav.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 120px 15px 120px;
+    background-color: #161b22;
+}
+
+nav.top-nav .left-nav,
+nav.top-nav .right-nav {
+    display: flex;
+    align-items: center;
+}
+
+nav.top-nav .left-nav a,
+nav.top-nav .right-nav a {
+    color: #c9d1d9;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 0px 18px 0 0;
+}
+
+nav.top-nav .right-nav input {
+    margin-right: 1em;
+    padding: 0.5em;
+    border-radius: 5px;
+    border: 1px solid #30363d;
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+
+nav.top-nav .right-nav .sign-in {
+    margin-left: 0.5em;
+}
+
+nav.top-nav .right-nav .sign-up {
+    margin-left: 0.5em;
+    padding: 0.5em 1em;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav.top-nav .logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 1em;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 15em 1em 15em;
+    text-align: left;
+    background-color: #0d1117;
+    height: 70vh;
+    color: #c9d1d9;
+}
+
+main > div {
+    margin-right: 2em; /* 텍스트 부분을 오른쪽으로 이동 */
+}
+
+main h1 {
+    font-size: 3em;
+    color: #c9d1d9;
+}
+
+main p {
+    font-size: 1.25em;
+    color: #8b949e;
+}
+
+main p .highlight {
+    color: #ffffff; /* 강조할 텍스트 색상 흰색 */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #ffffff;
+    height: 28em;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin-left: 0em;
+    justify-content: space-between;
+}
+
+form label {
+    margin-top: 1em;
+    font-size: 0.8em;
+    color: #333333; /* 폼 내부 텍스트 색상 어두운 색 */
+}
+
+form input {
+    padding: 0.75em;
+    margin-top: 0.5em;
+    width: 350px;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid #30363d;
+    background-color: #f6f8fa; /* 입력 필드 배경 색상 밝게 변경 */
+    color: #333333; /* 입력 필드 텍스트 색상 어두운 색 */
+}
+
+form .password-hint {
+    font-size: 0.7em;
+    color: #586069;
+    margin-top: 0.5em;
+}
+
+form .password-hint a {
+    color: #0366d6;
+    text-decoration: none;
+}
+
+form button {
+    margin-top: 0em;
+    margin-bottom: 1.5em;
+    padding: 1.5em 1em;
+    background-color: #2ea44f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+    width: 372px;
+}
+
+form .terms {
+    font-size: 0.7em;
+    color: #586069;
+    margin-top: 1em;
+}
+
+form .terms a {
+    color: #0366d6;
+    text-decoration: none;
+}
+
+footer {
+    text-align: right;
+    padding: 0em;
+    background-color: white;
+    color: white;
+}
+
+footer img {
+    width: 420px;
+    padding: 0px 120px 0 0;
+}
