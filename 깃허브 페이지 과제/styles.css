@@ -68,7 +68,7 @@ main {
 }
 
 main > div {
-    margin-right: 2em; /* 텍스트 부분을 오른쪽으로 이동 */
+    margin-right: 2em;
 }
 
 main h1 {
@@ -82,7 +82,7 @@ main p {
 }
 
 main p .highlight {
-    color: #ffffff; /* 강조할 텍스트 색상 흰색 */
+    color: #ffffff;
 }
 
 form {
@@ -101,7 +101,7 @@ form {
 form label {
     margin-top: 1em;
     font-size: 0.8em;
-    color: #333333; /* 폼 내부 텍스트 색상 어두운 색 */
+    color: #333333;
 }
 
 form input {
@@ -111,8 +111,8 @@ form input {
     height: 25px;
     border-radius: 5px;
     border: 1px solid #30363d;
-    background-color: #f6f8fa; /* 입력 필드 배경 색상 밝게 변경 */
-    color: #333333; /* 입력 필드 텍스트 색상 어두운 색 */
+    background-color: #f6f8fa; 
+    color: #333333;
 }
 
 form .password-hint {
