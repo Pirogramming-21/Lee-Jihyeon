@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>색깔 바꾸기</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: red;
+        }
+        @media screen and (max-width: 769px) {
+            .box {
+                background-color: yellow;
+            }
+        }
+        @media screen and (max-width: 400px) {
+            .box {
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

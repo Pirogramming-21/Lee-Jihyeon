@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        /*mobile first*/
+        #parent {
+            display: grid;
+            grid-template-columns: repeat(1, 100%);
+            gap: 10px;
+        }
+        .box {
+            height: 100px;
+            background-color: green;
+        }
+        @media screen and (min-width: 401px) {
+            #parent {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media screen and (min-width: 769px) {
+            #parent {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+</html>
