@@ -1,95 +1,261 @@
-/* 기본 스타일링 */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+@font-face {
+    font-family: 'NEXONLv1GothicLight';
+    src: url('NEXONLv1GothicRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-.portfolio-container {
+
+/* 기본 스타일링 */
+body {
+    font-family: 'NEXONLv1GothicLight', sans-serif;
+    margin: 0;
+    padding: 0 40px 50px;
+    background-color: black;
+    color: #ffffff;
+    display: block;
+    font-size: 18px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+header {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22.5px 5px 8px 0px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.8) 70%, rgba(0, 0, 0, 0) 100%);
+}
+
+
+header .logo {
+    position: relative;
+    top: 2.5px;
+}
+
+header .logo img {
+    height: 40px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 6px;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 5px 0px;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: #0bec12;
+    background-color: transparent;
+}
+
+main {
+    padding: 90px var(40px) 50px;
+    width: min(1200px, 100%);
+    margin: 0 auto;
+}
+
+main h1 {
+    text-align: center;
+    display: flex;
+    height: 40px;
+    font-size: 22px;
+    font-weight: 100;
+    margin-bottom: 17px;
+    align-items: center;
     justify-content: center;
 }
 
+.portfolio-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .portfolio-item {
+    width: 100%;
+    height: 141.5px;
+    background-color: #333333;
+    border-radius: 10px;
+    padding: var(16px);
+    display: flex;
+    gap: var(16px);
+    margin-bottom: var(16px);
+    cursor: pointer;
     position: relative;
-    width: 300px;
-    margin: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
 }
 
 .portfolio-item:hover {
     transform: translateY(-2px);
 }
 
+.portfolio-content {
+    display: flex;
+    gap: 20px;
+}
+
 .image-container {
     position: relative;
-    width: 100%;
-    overflow: hidden;
+    margin-left: 16px;
+    margin-top: 16px;
+    height: 90px;
+    width: 130px;
+    border-radius: 6px;
+    background-color: #ffffff;
+    padding: 10px; /* 적절한 패딩 추가 */
+    border-radius: 8px;
+    flex-shrink: 0;
 }
 
 .image-container img {
-    width: 100%;
-    transition: transform 0.3s ease;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
-.portfolio-item:hover .image-container img {
-    transform: scale(1.1);
+.portfolio-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.portfolio-info {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    position: relative;
+    flex-grow: 1;
+    margin-left: 42px;
+    padding: 19px 0 21px 0;
+}
+
+.portfolio-info h2 {
+    margin: 0 0 7.5px;
+    font-size: 22px;
+}
+
+.portfolio-info p {
+    color: #c6c6c6;
+    margin: 0 0 10px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.team {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.team span {
+    background-color: rgba(236,236,236,0.466);
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: lighter;
+    color: black;
+}
+
+.team span:first-child {
+    background-color: #2188b6; /* 파란색 배경 */
+    color: #ffffff; /* 텍스트 색상 흰색 */
 }
 
 .hamburger-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
     width: 30px;
-    height: 3px;
-    background-color: #000;
-    transition: background-color 0.3s ease;
+    height: 30px;
+    background-image: url('images/hamburger-icon.png');
+    background-size: cover;
+    transition: transform 0.3s ease;
 }
 
-.hamburger-button::before,
-.hamburger-button::after {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 3px;
-    background-color: #000;
-    transition: background-color 0.3s ease;
+.portfolio-item:hover .hamburger-button {
+    transform: rotate(90deg);
 }
 
-.hamburger-button::before {
-    top: -10px;
+footer {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
 }
 
-.hamburger-button::after {
-    top: 10px;
+.footer-info p {
+    margin: 5px 0;
 }
 
-.portfolio-item:hover .hamburger-button,
-.portfolio-item:hover .hamburger-button::before,
-.portfolio-item:hover .hamburger-button::after {
-    background-color: red;
+.footer-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 20px;
+}
+
+.footer-nav ul li {
+    margin: 0 10px;
+}
+
+.footer-nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 5px 10px;
+}
+
+.footer-nav ul li a.active,
+.footer-nav ul li a:hover {
+    background-color: #4caf50;
+    border-radius: 4px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
 }
 
 /* 반응형 디자인 */
-@media (max-width: 1400px) {
-    .portfolio-container {
-        justify-content: space-around;
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    .portfolio-list {
+        flex-direction: column;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 350px) {
     .portfolio-item {
-        width: 100%;
-        max-width: 500px;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
-    .portfolio-item:hover {
-        transform: none;
-    }
-
-    .image-container img {
-        transform: none;
+    .portfolio-item img {
+        width: 80px;
+        height: 80px;
     }
 }
