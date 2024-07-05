@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스톱워치</title>
+    <link rel="stylesheet" href="stopwatch.css">
+</head>
+<body>
+    <div class="container">
+        <h1>스톱워치</h1>
+        <div class="stopwatch">
+            <div class="time">00:00:00</div>
+            <div class="controls">
+                <button id="startBtn">start</button>
+                <button id="stopBtn">stop</button>
+                <button id="resetBtn">reset</button>
+            </div>
+        </div>
+        <div class="records">
+            <h2>구간 기록</h2>
+            <div class="record-controls">
+                <button id="selectAllBtn">전체 선택</button>
+                <button id="deleteSelectedBtn">선택 삭제</button>
+            </div>
+            <ul id="recordList"></ul>
+        </div>
+    </div>
+    <script src="stopwatch.js"></script>
+</body>
+</html>
