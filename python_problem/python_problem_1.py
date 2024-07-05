@@ -16,6 +16,9 @@ while num < 31:
     for i in range(count):
         num += 1
         print(f"playerA : {num}")
+        if num == 31:
+            print("playerB win!")
+            break
     if num == 31:
         break
     
@@ -23,5 +26,8 @@ while num < 31:
     for i in range(count):
         num += 1
         print(f"playerB : {num}")
+        if num == 31:
+            print("playerA win!")
+            break
     if num == 31:
         break
