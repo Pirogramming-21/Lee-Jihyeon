@@ -11,23 +11,27 @@ def get_valid_input():
         except ValueError:
             print("정수를 입력하세요")
 
-while num < 31:
+def player_turn(player, num):
     count = get_valid_input()
     for i in range(count):
         num += 1
-        print(f"playerA : {num}")
+        print(f"{player} : {num}")
         if num == 31:
-            print("playerB win!")
+            if player == "playerA":
+                print("playerB win!")
+            else:
+                print("playerA win!")
+            return num, True
+    return num, False
+
+def brGame():
+    num = 0
+    while num < 31:
+        num, finished = player_turn("playerA", num)
+        if finished:
             break
-    if num == 31:
-        break
-    
-    count = get_valid_input()
-    for i in range(count):
-        num += 1
-        print(f"playerB : {num}")
-        if num == 31:
-            print("playerA win!")
+        num, finished = player_turn("playerB", num)
+        if finished:
             break
-    if num == 31:
-        break
+
+brGame()
