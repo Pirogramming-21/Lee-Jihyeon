@@ -11,13 +11,17 @@ def get_valid_input():
         except ValueError:
             print("정수를 입력하세요")
 
-while True:
+while num < 31:
     count = get_valid_input()
     for i in range(count):
         num += 1
         print(f"playerA : {num}")
+    if num == 31:
+        break
     
     count = get_valid_input()
     for i in range(count):
         num += 1
         print(f"playerB : {num}")
+    if num == 31:
+        break
