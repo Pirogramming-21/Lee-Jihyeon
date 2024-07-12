@@ -1,24 +1,51 @@
 {% extends 'reviews/base.html' %}
-
 {% block title %}Movie Reviews{% endblock %}
-
 {% block content %}
-    <h2>Movie Reviews</h2>
-    <a href="{% url 'review_create' %}" class="btn">Write a Review</a>
-    <ul class="review-list">
-        {% for review in reviews %}
-            <li class="review-item">
+
+<h2>Movie Reviews</h2>
+
+<a href="{% url 'review_create' %}" class="btn">Write a Review</a>
+
+<div class="sort-options">
+    <p>Sort by:</p>
+    <a href="?sort=title" class="btn {% if current_sort == 'title' %}active{% endif %}">Title</a>
+    <a href="?sort=rating" class="btn {% if current_sort == 'rating' %}active{% endif %}">Rating</a>
+    <a href="?sort=runtime" class="btn {% if current_sort == 'runtime' %}active{% endif %}">Runtime</a>
+    <a href="?sort=year" class="btn {% if current_sort == 'year' %}active{% endif %}">Release Year</a>
+</div>
+
+<ul class="review-list">
+    {% for review in reviews %}
+        <li class="review-item">
+            <div class="review-poster">
+                {% if review.poster %}
+                    <img src="{{ review.poster.url }}" alt="{{ review.title }} poster" class="review-poster-img">
+                {% else %}
+                    <div class="no-poster">No Poster</div>
+                {% endif %}
+            </div>
+            <div class="review-content">
                 <h3><a href="{% url 'review_detail' review.pk %}">{{ review.title }}</a></h3>
                 <div class="review-meta">
-                    <span>{{ review.release_year }}</span> |
-                    <span>{{ review.genre }}</span> |
-                    <span class="star-rating">
-                        {% for i in review.rating|ljust:5 %}&#9733;{% endfor %}
-                    </span>
+                    {{ review.release_year }} | {{ review.get_genre_display }} | 
+                    <span class="rating">Rating: 
+                        <span class="stars">
+                            {% for i in "12345"|make_list %}
+                                {% if forloop.counter <= review.rating %}
+                                    ★
+                                {% else %}
+                                    ☆
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                    </span> |
+                    Runtime: {{ review.get_runtime_display }}
                 </div>
-            </li>
-        {% empty %}
-            <li>No reviews yet.</li>
-        {% endfor %}
-    </ul>
+            </div>
+        </li>
+    {% empty %}
+        <li>No reviews yet.</li>
+    {% endfor %}
+</ul>
+
 {% endblock %}

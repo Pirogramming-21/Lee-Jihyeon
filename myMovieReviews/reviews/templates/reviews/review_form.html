@@ -1,23 +1,40 @@
 {% extends 'reviews/base.html' %}
-
 {% block title %}{% if form.instance.pk %}Edit Review{% else %}New Review{% endif %}{% endblock %}
-
 {% block content %}
-    <h2>{% if form.instance.pk %}Edit Review{% else %}New Review{% endif %}</h2>
-    <form method="post">
-        {% csrf_token %}
-        {% for field in form %}
-            <div class="form-group">
-                {{ field.label_tag }}
+
+<h2>{% if form.instance.pk %}Edit Review{% else %}New Review{% endif %}</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="form-group">
+        {{ field.label_tag }}
+        {% if field.name == 'poster' %}
+            <div class="poster-upload">
+                <label for="{{ field.id_for_label }}" class="poster-label">
+                    Choose poster
+                </label>
                 {{ field }}
-                {% if field.help_text %}
-                    <small class="form-text text-muted">{{ field.help_text }}</small>
-                {% endif %}
-                {% for error in field.errors %}
-                    <p class="text-danger">{{ error }}</p>
-                {% endfor %}
+                <span id="file-name" class="file-name">No file chosen</span>
             </div>
-        {% endfor %}
-        <button type="submit" class="btn">Save</button>
-    </form>
+        {% elif field.name == 'genre' %}
+            {{ field }}
+        {% elif field.name == 'runtime' %}
+            {{ field }}
+            <small class="form-text text-muted">Please enter the runtime in minutes.</small>
+        {% else %}
+            {{ field }}
+        {% endif %}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn">Save</button>
+</form>
+
+<script>
+    document.getElementById('{{ form.poster.id_for_label }}').addEventListener('change', function(e) {
+        var fileName = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
+        document.getElementById('file-name').textContent = fileName;
+    });
+</script>
+
 {% endblock %}

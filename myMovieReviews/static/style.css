@@ -8,6 +8,11 @@ body {
     background-color: #f4f4f4;
 }
 
+h1 {
+    display: flex;
+    justify-content: space-around;
+}
+
 h1, h2, h3 {
     color: #2c3e50;
 }
@@ -23,7 +28,7 @@ a:hover {
 
 .btn {
     display: inline-block;
-    background: #3498db;
+    background-color: #3498db;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -31,12 +36,20 @@ a:hover {
     cursor: pointer;
     text-decoration: none;
     font-size: 16px;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-    background: #2980b9;
+    background-color: #2980b9;
     text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #2ecc71;
+}
+
+.btn-primary:hover {
+    background-color: #27ae60;
 }
 
 .review-list {
@@ -45,11 +58,43 @@ a:hover {
 }
 
 .review-item {
+    display: flex;
     background: #fff;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.review-poster {
+    flex: 0 0 100px;
+    margin-right: 20px;
+}
+
+.review-poster-img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.no-poster {
+    width: 100px;
+    height: 150px;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: #999;
+    font-size: 14px;
+}
+
+.review-content {
+    flex: 1;
+}
+
+.review-content h3 {
+    margin-top: 0;
 }
 
 .review-meta {
@@ -58,29 +103,117 @@ a:hover {
     margin-bottom: 10px;
 }
 
-.star-rating {
+.star-rating,
+.review-meta .rating .stars {
+    color: #f1c40f;  /* 노란색 */
+}
+
+.star-rating .stars,
+.review-meta .rating .stars {
+    unicode-bidi: bidi-override;
     color: #f1c40f;
+    font-size: 0.9em;
+    height: 25px;
+    width: 125px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0;
 }
 
-form {
-    background: #fff;
+.star-rating .stars > span,
+.review-meta .rating .stars > span {
+    color: #ccc;  /* 빈 별 색상 */
+    padding: 0;
+}
+
+.review-meta .rating {
+    color: #7f8c8d;  /* 기존 review-meta 색상 */
+}
+
+.review-form {
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-input[type="text"],
-input[type="number"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.form-group {
+    margin-bottom: 20px;
 }
 
-label {
+.form-group label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
     color: #2c3e50;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.poster-upload {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.poster-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.poster-label:hover {
+    background-color: #2980b9;
+}
+
+.poster-label i {
+    margin-right: 5px;
+}
+
+input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    display: none;
+}
+
+.file-name {
+    display: inline-block;
+    margin-left: 10px;
+    font-style: italic;
+    color: #666;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sort-options {
+    margin: 20px 0;
+}
+
+.sort-options .btn {
+    margin-right: 10px;
+}
+
+.sort-options .btn.active {
+    background-color: #2980b9;
 }

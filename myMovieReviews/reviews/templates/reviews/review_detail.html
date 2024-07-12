@@ -1,24 +1,39 @@
 {% extends 'reviews/base.html' %}
-
 {% block title %}{{ review.title }}{% endblock %}
-
 {% block content %}
-    <article class="review-item">
-        <h2>{{ review.title }}</h2>
-        <div class="review-meta">
-            <p>Director: {{ review.director }}</p>
-            <p>Actors: {{ review.actors }}</p>
-            <p>Genre: {{ review.genre }}</p>
-            <p>Release Year: {{ review.release_year }}</p>
-            <p>Runtime: {{ review.runtime }} minutes</p>
-            <p class="star-rating">Rating: {% for i in review.rating|ljust:5 %}&#9733;{% endfor %}</p>
-        </div>
-        <div class="review-content">
-            {{ review.content|linebreaks }}
-        </div>
-        <div class="review-actions">
-            <a href="{% url 'review_update' review.pk %}" class="btn">Edit</a>
-            <a href="{% url 'review_delete' review.pk %}" class="btn" style="background-color: #e74c3c;">Delete</a>
-        </div>
-    </article>
+
+<h2>{{ review.title }}</h2>
+
+{% if review.poster %}
+    <img src="{{ review.poster.url }}" alt="{{ review.title }} 포스터" style="max-width: 300px;">
+{% endif %}
+
+<div class="review-meta">
+    <p>Director: {{ review.director }}</p>
+    <p>Actors: {{ review.actors }}</p>
+    <p>Genre: {{ review.get_genre_display }}</p>
+    <p>Release Year: {{ review.release_year }}</p>
+    <p>Runtime: {{ review.get_runtime_display }}</p>
+    <p>Rating: 
+        <span class="stars">
+            {% for i in "12345"|make_list %}
+                {% if forloop.counter <= review.rating %}
+                    ★
+                {% else %}
+                    ☆
+                {% endif %}
+            {% endfor %}
+        </span>
+    </p>
+</div>
+
+<div class="review-content">
+    {{ review.content|linebreaks }}
+</div>
+
+<div class="review-actions">
+    <a href="{% url 'review_update' review.pk %}" class="btn">Edit</a>
+    <a href="{% url 'review_delete' review.pk %}" class="btn" style="background-color: #e74c3c;">Delete</a>
+</div>
+
 {% endblock %}
