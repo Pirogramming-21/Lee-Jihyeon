@@ -1,0 +1,24 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %}{{ review.title }}{% endblock %}
+
+{% block content %}
+    <article class="review-item">
+        <h2>{{ review.title }}</h2>
+        <div class="review-meta">
+            <p>Director: {{ review.director }}</p>
+            <p>Actors: {{ review.actors }}</p>
+            <p>Genre: {{ review.genre }}</p>
+            <p>Release Year: {{ review.release_year }}</p>
+            <p>Runtime: {{ review.runtime }} minutes</p>
+            <p class="star-rating">Rating: {% for i in review.rating|ljust:5 %}&#9733;{% endfor %}</p>
+        </div>
+        <div class="review-content">
+            {{ review.content|linebreaks }}
+        </div>
+        <div class="review-actions">
+            <a href="{% url 'review_update' review.pk %}" class="btn">Edit</a>
+            <a href="{% url 'review_delete' review.pk %}" class="btn" style="background-color: #e74c3c;">Delete</a>
+        </div>
+    </article>
+{% endblock %}

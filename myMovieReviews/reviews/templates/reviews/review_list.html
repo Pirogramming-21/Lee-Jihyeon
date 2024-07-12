@@ -1,0 +1,24 @@
+{% extends 'reviews/base.html' %}
+
+{% block title %}Movie Reviews{% endblock %}
+
+{% block content %}
+    <h2>Movie Reviews</h2>
+    <a href="{% url 'review_create' %}" class="btn">Write a Review</a>
+    <ul class="review-list">
+        {% for review in reviews %}
+            <li class="review-item">
+                <h3><a href="{% url 'review_detail' review.pk %}">{{ review.title }}</a></h3>
+                <div class="review-meta">
+                    <span>{{ review.release_year }}</span> |
+                    <span>{{ review.genre }}</span> |
+                    <span class="star-rating">
+                        {% for i in review.rating|ljust:5 %}&#9733;{% endfor %}
+                    </span>
+                </div>
+            </li>
+        {% empty %}
+            <li>No reviews yet.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
