@@ -105,7 +105,7 @@ a:hover {
 
 .star-rating,
 .review-meta .rating .stars {
-    color: #f1c40f;  /* 노란색 */
+    color: #f1c40f;
 }
 
 .star-rating .stars,
@@ -122,12 +122,12 @@ a:hover {
 
 .star-rating .stars > span,
 .review-meta .rating .stars > span {
-    color: #ccc;  /* 빈 별 색상 */
+    color: #ccc;
     padding: 0;
 }
 
 .review-meta .rating {
-    color: #7f8c8d;  /* 기존 review-meta 색상 */
+    color: #7f8c8d;
 }
 
 .review-form {
