@@ -1,0 +1,340 @@
+:root {
+  --primary-color: #4A90E2;  /* 하늘색 */
+  --secondary-color: #50C878;  /* 초록색 */
+  --background-color: #FFFFFF;  /* 흰색 */
+  --text-color: #333333;  /* 진한 회색 */
+  --light-gray: #F5F5F5;  /* 매우 연한 회색 */
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+nav {
+  background-color: var(--background-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+nav ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: var(--primary-color);
+}
+
+h1, h2 {
+  display: flex;
+  color: var(--primary-color);
+  justify-content: center;
+}
+
+.sort-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.sort-option {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sort-option:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.idea-detail {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: var(--background-color);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+}
+
+.idea-detail h1 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.idea-meta {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+}
+
+.idea-image {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.idea-image img {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.idea-content, .idea-devtools {
+  margin-bottom: 20px;
+}
+
+.idea-content h2, .idea-devtools h2 {
+  color: var(--secondary-color);
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.idea-devtools ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.idea-devtools li {
+  margin-bottom: 5px;
+}
+
+.idea-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.idea-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.idea-item {
+  background-color: var(--light-gray);
+  border-radius: 10px;
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.idea-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.idea-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.star-button {
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: var(--secondary-color);
+}
+
+.star-button .star {
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.star-button .star.active {
+  color: gold;
+}
+
+.interest-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.interest-control button {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.interest-control button:hover {
+  background-color: var(--secondary-color);
+}
+
+form {
+  background-color: var(--light-gray);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: var(--background-color);
+}
+
+button[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--secondary-color);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 20px 0;
+}
+
+.page-link {
+  color: var(--primary-color);
+  background-color: #fff;
+  border: 1px solid var(--primary-color);
+  padding: 5px 10px;
+  margin: 0 2px;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.page-link:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.page-link.current {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: bold;
+}
+
+.pagination a {
+  color: var(--primary-color);
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border: 1px solid var(--primary-color);
+  margin: 0 4px;
+}
+
+.pagination a:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.sort-option.active {
+  background-color: var(--secondary-color);
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .sort-options {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .sort-option {
+      width: 80%;
+      text-align: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+      width: 95%;
+  }
+
+  .idea-grid {
+      grid-template-columns: 1fr;
+  }
+  
+  .sort-options {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sort-options a {
+    margin-bottom: 0.5rem;
+  }
+}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>{{ devtool.name }}</h1>
+<p>종류: {{ devtool.kind }}</p>
+<p>{{ devtool.content }}</p>
+
+<h2>이 개발툴을 사용한 아이디어:</h2>
+<ul>
+{% for idea in devtool.ideas.all %}
+    <li><a href="{% url 'idea_detail' idea.id %}">{{ idea.title }}</a></li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'devtool_update' devtool.id %}">수정</a>
+<a href="{% url 'devtool_delete' devtool.id %}">삭제</a>
+<a href="{% url 'devtool_list' %}">목록</a>
+{% endblock %}

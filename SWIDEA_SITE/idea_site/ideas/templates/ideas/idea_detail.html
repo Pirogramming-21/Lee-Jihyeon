@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="idea-detail">
+    <h1>{{ idea.title }}</h1>
+    <div class="idea-meta">
+        <span>등록일: {{ idea.created_at|date:"Y-m-d" }}</span>
+        <span>관심도: {{ idea.interest }}</span>
+    </div>
+    <div class="idea-image">
+        <img src="{{ idea.image.url }}" alt="{{ idea.title }}">
+    </div>
+    <div class="idea-content">
+        <h2>내용</h2>
+        <p>{{ idea.content }}</p>
+    </div>
+    <div class="idea-devtools">
+        <h2>사용된 개발툴</h2>
+        <ul>
+        {% for devtool in idea.devtools.all %}
+            <li><a href="{% url 'devtool_detail' devtool.id %}">{{ devtool.name }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="star-button" data-idea-id="{{ idea.id }}">
+        {% if is_starred %}
+            <span class="star active">★</span>
+        {% else %}
+            <span class="star">☆</span>
+        {% endif %}
+    </div>
+    <div class="idea-actions">
+        <a href="{% url 'idea_update' idea.id %}" class="btn btn-primary">수정</a>
+        <a href="{% url 'idea_delete' idea.id %}" class="btn btn-danger">삭제</a>
+        <a href="{% url 'idea_list' %}" class="btn btn-secondary">목록</a>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const starButton = document.querySelector('.star-button');
+    starButton.addEventListener('click', function() {
+        const ideaId = this.dataset.ideaId;
+        fetch(`/api/ideas/${ideaId}/star/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken'),
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            const starSpan = this.querySelector('.star');
+            if (data.starred) {
+                starSpan.textContent = '★';
+                starSpan.classList.add('active');
+            } else {
+                starSpan.textContent = '☆';
+                starSpan.classList.remove('active');
+            }
+        });
+    });
+});
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+</script>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>개발툴 관리</h1>
+<ul>
+{% for devtool in devtools %}
+    <li><a href="{% url 'devtool_detail' devtool.id %}">{{ devtool.name }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

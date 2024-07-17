@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>아이디어 관리</h1>
+
+<div class="sort-options">
+    <a href="?sort=latest" class="sort-option {% if current_sort == 'latest' %}active{% endif %}">최신순</a>
+    <a href="?sort=stars" class="sort-option {% if current_sort == 'stars' %}active{% endif %}">찜하기순</a>
+    <a href="?sort=name" class="sort-option {% if current_sort == 'name' %}active{% endif %}">이름순</a>
+    <a href="?sort=oldest" class="sort-option {% if current_sort == 'oldest' %}active{% endif %}">등록순</a>
+</div>
+
+<div class="idea-grid">
+    {% for idea in ideas %}
+    <div class="idea-item">
+        <div class="image-container">
+            <img src="{{ idea.image.url }}" alt="{{ idea.title }}">
+        </div>
+        <h2><a href="{% url 'idea_detail' idea.id %}">{{ idea.title }}</a></h2>
+        <div class="star-button" data-idea-id="{{ idea.id }}">
+            {% if idea.id in request.session.starred_ideas %}
+            <span class="star active">★</span>
+            {% else %}
+            <span class="star">☆</span>
+            {% endif %}
+        </div>
+        <div class="interest-control">
+            <button class="interest-minus" data-idea-id="{{ idea.id }}">-</button>
+            <span class="interest-value">{{ idea.interest }}</span>
+            <button class="interest-plus" data-idea-id="{{ idea.id }}">+</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% include 'pagination.html' %}
+{% endblock %}
